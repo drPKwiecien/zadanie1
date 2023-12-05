@@ -50,9 +50,17 @@
     	     <img src="pkfoto.png" alt="foto">
     	     <p>dr Przemysław Kwiecień CFA</p>
 	</div>
-        <div class="twitter-feed">
-	     <script src="https://publish.twitter.com/oembed?url=https://twitter.com/PrzemekSNR" charset="utf-8"></script>
-             </div>
-    	</div>	
+        <div class="twitter-feed"></div>
+	<script src="https://publish.twitter.com/oembed?url=https://twitter.com/PrzemekSNR" charset="utf-8"></script>
+
+	<script>
+	  var script = document.createElement('script');
+	  script.onload = function() {
+	    var embed = document.getElementById('twitter-embed');
+	    embed.innerHTML = this.responseText;
+	  };
+	  script.src = 'https://platform.twitter.com/widgets.js';
+	  document.body.appendChild(script);
+	</script>
 </body>
 </html>
