@@ -2,23 +2,58 @@
 <html>
 <head>
     <title>Blog ekonomiczny: Przemysław Kwiecień</title>
-<style>
-    body {
-        background-color: lightblue;
-    }
-</style>
-
+    <style>
+    	body {
+        	background-color: lightblue;
+    	}
+        .page-container {
+            display: flex;
+            flex-direction: row;
+        }
+	.main-content {
+	    width: 75%;
+	    font-family: 'Arial', sans-serif;
+	    font-size: 16px;
+	    color: #333;
+	    text-align: left;
+	    line-height: 1.6;
+	    padding: 20px;
+	    margin: 10px;
+	    background-color: #ffffff;
+	    border: 1px solid #ddd;
+	    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .twitter-feed {
+            width: 25%;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 768px) {
+            .page-container {
+                flex-direction: column;
+            }
+            .main-content, .twitter-feed {
+                width: 100%;
+            }
+	}
+    </style>
+</head>
 <body>
     <h1>Na tej stronie znajdziesz</h1>
-    <ul>
-        <li>Analizę obecnej sytuacji gospodarczej</li>
-        <li>Wnioski dla inwestorów</li>
-        <li>Ciekawe komentarze społeczności pod artykułami</li>
-    </ul>
-    <p>Odwiedź <a href="https://www.przemyslawkwiecien.pl"> mój blog</a>!</p>
-    <img src="pkfoto.png" alt="foto">
-    <p>dr Przemysław Kwiecień CFA</p>
-<a class="twitter-timeline" href="https://twitter.com/PrzemekSNR?ref_src=twsrc%5Etfw">Tweets by PrzemekSNR</a> 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div class="page-container">
+        <div class="main-content">	
+    	     <ul>
+             <li>Analizę obecnej sytuacji gospodarczej</li>
+             <li>Wnioski dla inwestorów</li>
+             <li>Ciekawe komentarze społeczności pod artykułami</li>
+    	     </ul>
+    	     <p>Odwiedź <a href="https://www.przemyslawkwiecien.pl"> mój blog</a>!</p>
+    	     <img src="pkfoto.png" alt="foto">
+    	     <p>dr Przemysław Kwiecień CFA</p>
+	</div>
+        <div class="twitter-feed">
+            <a class="twitter-timeline" href="https://twitter.com/PrzemekSNR?ref_src=twsrc%5Etfw">Tweets by PrzemekSNR</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>	
 </body>
 </html>
