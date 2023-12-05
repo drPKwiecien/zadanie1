@@ -36,6 +36,43 @@
             }
 	}
     </style>
+<script>
+    $(document).ready(function() {
+      const apiKey = "K0JUNOW6K2O03MI0";
+      const symbol = "AAPL"; // Replace "AAPL" with the desired stock symbol
+
+      // Fetch live financial data using Alpha Vantage API
+      $.ajax({
+        url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=1min&apikey=${apiKey}`,
+        dataType: "json",
+        success: function(response) {
+          // Extract relevant data from the response
+          const latestData = response["Time Series (1min)"]["01. Realtime"];
+          const price = latestData["price"];
+          const change = latestData["change"];
+          const changePercent = latestData["changePercent"];
+
+          // Update the DOM with the latest data
+          $("#stock-price").text(price);
+          $("#stock-change").text(change);
+          $("#stock-change-percent").text(`${changePercent}%`);
+
+          // Update the stock price every minute
+          setInterval(function() {
+            $.ajax({
+              url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=1min&apikey=${apiKey}`,
+              dataType: "json",
+              success: function(response) {
+                const latestData = response["Time Series (1min)"]["01. Realtime"];
+                const price = latestData["price"];
+                $("#stock-price").text(price);
+              }
+            });
+          }, 60000); // Update every 60 seconds (1 minute)
+        }
+      });
+    });
+  </script>
 </head>
 <body>
     <h1>Na tej stronie znajdziesz</h1>
@@ -51,17 +88,15 @@
     	     <p>dr Przemysław Kwiecień CFA</p>
 	</div>
         <div class="twitter-feed"></div>
-	<div id="twitter-embed"></div>
-	<script src="https://publish.twitter.com/oembed?url=https://twitter.com/PrzemekSNR" charset="utf-8"></script>
-
-	<script>
-	  var script = document.createElement('script');
-	  script.onload = function() {
-	    var embed = document.getElementById('twitter-embed');
-	    embed.innerHTML = this.responseText;
-	  };
-	  script.src = 'https://platform.twitter.com/widgets.js';
-	  document.body.appendChild(script);
-	</script>
+            <a class="twitter-timeline" href="https://twitter.com/PrzemekSNR?ref_src=twsrc%5Etfw">Tweets by PrzemekSNR</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+        <div id="stock-data">
+	    <p>Stock: AAPL</p>
+	    <p>Current Price: <span id="stock-price"></span></p>
+	    <p>Change: <span id="stock-change"></span></p>
+	    <p>Change (%): <span id="stock-change-percent"></span></p>
+        </div>
+    </div>
 </body>
 </html>
