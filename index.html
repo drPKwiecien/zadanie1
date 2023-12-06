@@ -26,6 +26,8 @@
         .twitter-feed {
             width: 25%;
             border: 1px solid #ddd;
+	    max-height: 1500px;
+	    overflow: auto;
         }
         @media only screen and (max-width: 768px) {
             .page-container {
@@ -93,12 +95,13 @@
             <a class="twitter-timeline" href="https://twitter.com/PrzemekSNR?ref_src=twsrc%5Etfw">Tweets by PrzemekSNR</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
+    </div>
         <div id="stock-data">
 	    <p>Stock: AAPL</p>
 	    <p>Current Price: <span id="stock-price"></span></p>
 	    <p>Change: <span id="stock-change"></span></p>
 	    <p>Change (%): <span id="stock-change-percent"></span></p>
         </div>
-    </div>
+    </div>	
 </body>
 </html>
